@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography/Typography";
+import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { observer } from "mobx-react-lite";
-import ExchangeRate from "../../store/exchangeRate";
-import { Line, LineConfig } from "@ant-design/charts";
+import ExchangeRate from "../store/exchangeRate";
+import { LineConfig } from "@ant-design/charts";
+import dynamic from "next/dynamic";
 import { Box } from "@mui/system";
 import { SelectChangeEvent } from "@mui/material/Select";
-import SelectorField from "../../components/SelectorField";
-import { sectionStyle, typographyStyle } from "../../styles/styles";
-import MainLayout from "../../layout/MainLayout";
-import AnimatedText from "../../components/AnimatedText";
+import SelectorField from "../components/SelectorField";
+import { sectionStyle, typographyStyle } from "../styles/styles";
+import MainLayout from "../layout/MainLayout";
+import AnimatedText from "../components/AnimatedText";
+import Loader from "../components/Loader";
+
+const Line = dynamic(() => import("@ant-design/charts").then((m) => m.Line), {
+  ssr: false,
+  loading: () => <Loader size={100} height={"100%"} />,
+});
 
 const HistoryPage = observer(() => {
   const [valueChart, setValueChart] = useState({
@@ -87,6 +94,7 @@ const HistoryPage = observer(() => {
             style={typographyStyle}
             textAlign={"center"}
             margin={"0 0 20px 0"}
+            bgcolor={"rgba(255,255,255,0.7)"}
             sx={{
               "&:active": {
                 boxShadow: "none !important",

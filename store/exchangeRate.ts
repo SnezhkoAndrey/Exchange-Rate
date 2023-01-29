@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import getTimeseriesExchangeRateApi from "../pages/api/api";
+import getTimeseriesExchangeRateApi from "../api/api";
 import {
   ChartValueType,
   Coursid,
@@ -8,12 +8,12 @@ import {
 
 class ExchangeRate {
   exchangeRates = {
-    courcid: {} as Coursid[],
     timeseriesExchangeRates: {
       date: [] as string[],
       rate: [] as TimeseriesResponseType[],
     },
     currency: "USD",
+    error: "",
   };
 
   constructor() {
@@ -21,21 +21,29 @@ class ExchangeRate {
   }
 
   async getTimeseriesExchangeRate(valueChart: ChartValueType) {
-    const response = await getTimeseriesExchangeRateApi(valueChart);
-    runInAction(() => {
-      this.exchangeRates = {
-        ...this.exchangeRates,
-        timeseriesExchangeRates: response,
-      };
-    });
-  }
-
-  getExchangeRate(response: Coursid[]) {
-    this.exchangeRates = { ...this.exchangeRates, courcid: response };
+    try {
+      const response = await getTimeseriesExchangeRateApi(valueChart);
+      runInAction(() => {
+        this.exchangeRates = {
+          ...this.exchangeRates,
+          timeseriesExchangeRates: response,
+        };
+      });
+    } catch (error: any) {
+      this.setError(error.message);
+    }
   }
 
   changeCurrency(currency: string) {
-    this.exchangeRates = { ...this.exchangeRates, currency: currency };
+    try {
+      this.exchangeRates = { ...this.exchangeRates, currency: currency };
+    } catch (error: any) {
+      this.setError(error.message);
+    }
+  }
+
+  setError(error: string) {
+    this.exchangeRates = { ...this.exchangeRates, error: error };
   }
 }
 

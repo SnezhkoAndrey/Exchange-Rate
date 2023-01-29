@@ -1,4 +1,4 @@
-import { ChartValueType, TimeseriesResponseType } from "../../types/types";
+import { ChartValueType, TimeseriesResponseType } from "../types/types";
 
 export default async function getTimeseriesExchangeRateApi(
   valueChart: ChartValueType
@@ -17,7 +17,7 @@ export default async function getTimeseriesExchangeRateApi(
     `https://api.apilayer.com/exchangerates_data/timeseries?start_date=${valueDP}-01-01&end_date=${valueDP}-12-31&base=${currency}&symbols=UAH`,
     requestOptions
   );
-  const data = await response.json();
+  const data = (await response.json()) as any;
   return {
     date: Object.keys(data.rates) as string[],
     rate: Object.values(data.rates) as TimeseriesResponseType[],

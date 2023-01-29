@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Stack } from "@mui/system";
 import { Box } from "@mui/system";
 
 interface PropsType {
@@ -16,7 +15,7 @@ const AnimatedText = ({ textValue }: PropsType) => {
       setTimeout(() => {
         setText(text + fullText[index]);
         setIndex(index + 1);
-      }, 40);
+      }, 20);
     }
   }, [index]);
 

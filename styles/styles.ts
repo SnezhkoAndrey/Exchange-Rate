@@ -23,3 +23,14 @@ export const infoStyle = {
   padding: "0 5px",
   color: "rgba(40,22,17)",
 };
+
+export const styledError = {
+  style: {
+    fontFamily: "VT323",
+    fontSize: "20px",
+    background: "rgba(255,255,255,0.7)",
+    color: "rgba(40,22,17)",
+    border: "5px solid #a81919",
+    borderRadius: "0",
+  },
+};
