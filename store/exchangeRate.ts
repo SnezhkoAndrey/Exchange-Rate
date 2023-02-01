@@ -1,10 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import getTimeseriesExchangeRateApi from "../api/api";
-import {
-  ChartValueType,
-  Coursid,
-  TimeseriesResponseType,
-} from "../types/types";
+import { ChartValueType, TimeseriesResponseType } from "../types/types";
 
 class ExchangeRate {
   exchangeRates = {

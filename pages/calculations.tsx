@@ -11,7 +11,6 @@ import { sectionStyle, typographyStyle } from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
 import { CourcidResponceType } from "../types/types";
-import ErrorLayout from "../layout/ErrorLayout";
 
 const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
   const { currency } = exchangeRate.exchangeRates;
@@ -67,65 +66,59 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
 
   return (
     <MainLayout title="Calculation Page">
-      <ErrorLayout>
-        <Stack
-          direction={"column"}
-          alignItems={"center"}
-          spacing={12}
-          style={sectionStyle}
-          padding={"20px 0 0 0"}
-        >
-          <Link href={"/"}>
-            <Typography
-              variant="h4"
-              component="div"
-              style={typographyStyle}
-              textAlign={"center"}
-              bgcolor={"rgba(255,255,255,0.7)"}
-              sx={{
-                "&:active": {
-                  boxShadow: "none !important",
-                  transform: "translate(3px)",
-                },
-              }}
-            >
-              Back
-            </Typography>
-          </Link>
-          <Stack
-            direction={"row"}
+      <Stack
+        direction={"column"}
+        alignItems={"center"}
+        spacing={12}
+        style={sectionStyle}
+      >
+        <Link href={"/"}>
+          <Typography
+            variant="h4"
+            component="div"
+            style={typographyStyle}
             textAlign={"center"}
-            justifyContent={"center"}
-            alignItems={{ xs: "center" }}
-            spacing={6}
+            bgcolor={"rgba(255,255,255,0.7)"}
+            sx={{
+              "&:active": {
+                boxShadow: "none !important",
+                transform: "translate(3px)",
+              },
+            }}
           >
-            <Stack
-              direction={{ xs: "column", sm: "row", md: "row" }}
-              spacing={4}
-            >
-              <TextFieldRate
-                label={currency === "USD" ? "USD" : "EUR"}
-                value={UAH}
-                onChange={onChangeForeignCurrency}
-              />
+            Back
+          </Typography>
+        </Link>
+        <Stack
+          direction={"row"}
+          textAlign={"center"}
+          justifyContent={"center"}
+          alignItems={{ xs: "center" }}
+          spacing={6}
+        >
+          <Stack direction={{ xs: "column", sm: "row", md: "row" }} spacing={4}>
+            <TextFieldRate
+              label={currency === "USD" ? "USD" : "EUR"}
+              value={UAH}
+              onChange={onChangeForeignCurrency}
+            />
 
-              <TextFieldRate
-                label="UAH"
-                value={isUSD ? USD : EUR}
-                onChange={onChangeDomesticCurrency}
-              />
-            </Stack>
-
-            <SelectorField
-              label={"Currency"}
-              value={currency}
-              handleChange={handleChangeCurrency}
-              arrayValue={arrayCurrency}
+            <TextFieldRate
+              label="UAH"
+              value={isUSD ? USD : EUR}
+              onChange={onChangeDomesticCurrency}
             />
           </Stack>
-          <AnimatedText textValue="Calculations are made at the cash rate (sale) of Privat Bank (in branches). Last update: today. Thank you for using the application!" />
+
+          <SelectorField
+            label={"Currency"}
+            value={currency}
+            handleChange={handleChangeCurrency}
+            arrayValue={arrayCurrency}
+          />
         </Stack>
-      </ErrorLayout>
+        <AnimatedText textValue="Calculations are made at the cash rate (sale) of Privat Bank (in branches). Last update: today. Thank you for using the application!" />
+      </Stack>
     </MainLayout>
   );
 });

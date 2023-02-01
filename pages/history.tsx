@@ -84,7 +84,6 @@ const HistoryPage = observer(() => {
         style={sectionStyle}
         direction={"column"}
         alignItems={"center"}
-        padding={"20px 0 0 0"}
         spacing={2}
       >
         <Link href={"/"}>

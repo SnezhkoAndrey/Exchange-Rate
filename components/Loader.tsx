@@ -18,7 +18,7 @@ const Loader = ({ size, height }: PropsType) => {
         height: { height },
       }}
     >
-      <SpiralSpinner size={size} frontColor="#f0aab6" />
+      <SpiralSpinner size={size} frontColor="#f0aab6" backColor="#474b70" />
     </Stack>
   );
 };

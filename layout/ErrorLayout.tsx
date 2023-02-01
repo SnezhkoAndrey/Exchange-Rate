@@ -20,7 +20,7 @@ const ErrorLayout = ({ children }: PropsType) => {
 
   return (
     <>
-      <main>{children}</main>
+      <div>{children}</div>
       <Toaster />
     </>
   );
