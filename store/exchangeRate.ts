@@ -1,6 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import getTimeseriesExchangeRateApi from "../api/api";
+import HTTPClient from "../api/api";
 import { ChartValueType, TimeseriesResponseType } from "../types/types";
+
+const { GET } = HTTPClient();
 
 class ExchangeRate {
   exchangeRates = {
@@ -17,8 +19,12 @@ class ExchangeRate {
   }
 
   async getTimeseriesExchangeRate(valueChart: ChartValueType) {
+    const { valueDP, currency } = valueChart;
+
     try {
-      const response = await getTimeseriesExchangeRateApi(valueChart);
+      const response = await GET(
+        `timeseries?start_date=${valueDP}-01-01&end_date=${valueDP}-12-31&base=${currency}&symbols=UAH`
+      );
       runInAction(() => {
         this.exchangeRates = {
           ...this.exchangeRates,

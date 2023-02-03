@@ -1,25 +1,30 @@
-import { ChartValueType, TimeseriesResponseType } from "../types/types";
+import { TimeseriesResponseType } from "../types/types";
 
-export default async function getTimeseriesExchangeRateApi(
-  valueChart: ChartValueType
-) {
+const HTTPClient = () => {
   const myHeaders = new Headers();
-  myHeaders.append("apikey", "Bl7NBmnmxFb0qC0RvLk4315ZRq9LPW2d");
+  myHeaders.append("apikey", process.env.NEXT_PUBLIC_API as string);
+  const baseURL = process.env.NEXT_PUBLIC_URL as string;
 
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
+  async function fetchJSON(endpoint: string, options = {}) {
+    const response = await fetch(baseURL + endpoint, {
+      ...options,
+      headers: myHeaders,
+    });
+
+    const data = (await response.json()) as any;
+    return {
+      date: Object.keys(data.rates) as string[],
+      rate: Object.values(data.rates) as TimeseriesResponseType[],
+    };
+  }
+
+  const GET = async (endpoint: string) => {
+    return await fetchJSON(endpoint, {
+      method: "GET",
+    });
   };
 
-  const { valueDP, currency } = valueChart;
+  return { GET };
+};
 
-  const response = await fetch(
-    `https://api.apilayer.com/exchangerates_data/timeseries?start_date=${valueDP}-01-01&end_date=${valueDP}-12-31&base=${currency}&symbols=UAH`,
-    requestOptions
-  );
-  const data = (await response.json()) as any;
-  return {
-    date: Object.keys(data.rates) as string[],
-    rate: Object.values(data.rates) as TimeseriesResponseType[],
-  };
-}
+export default HTTPClient;
