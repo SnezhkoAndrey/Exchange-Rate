@@ -115,7 +115,7 @@ const HistoryPage = observer(() => {
         </Stack>
         <Box
           sx={{
-            width: { xs: "80%", sm: "80%", md: "80%" },
+            width: "80%",
             background: "rgba(255,255,255, 1)",
             borderRadius: 3,
           }}
