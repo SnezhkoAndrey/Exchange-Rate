@@ -1,4 +1,4 @@
-import { TimeseriesResponseType } from "../types/types";
+import { DataResponseType, TimeseriesResponseType } from "../types/types";
 
 const HTTPClient = () => {
   const myHeaders = new Headers();
@@ -11,7 +11,8 @@ const HTTPClient = () => {
       headers: myHeaders,
     });
 
-    const data = (await response.json()) as any;
+    const data = (await response.json()) as DataResponseType;
+
     return {
       date: Object.keys(data.rates) as string[],
       rate: Object.values(data.rates) as TimeseriesResponseType[],

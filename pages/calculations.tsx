@@ -4,10 +4,10 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import exchangeRate from "../store/exchangeRate";
-import TextFieldRate from "../components/TextField";
+import TextFieldRate from "../components/TextFieldRate";
 import SelectorField from "../components/SelectorField";
 import { SelectChangeEvent } from "@mui/material";
-import { sectionStyle, typographyStyle } from "../styles/styles";
+import { ButtonStyle, sectionStyle, typographyStyle } from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
 import { CourcidResponceType } from "../types/types";
@@ -79,12 +79,7 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
             style={typographyStyle}
             textAlign={"center"}
             bgcolor={"rgba(255,255,255,0.7)"}
-            sx={{
-              "&:active": {
-                boxShadow: "none !important",
-                transform: "translate(3px)",
-              },
-            }}
+            sx={ButtonStyle}
           >
             Back
           </Typography>

@@ -3,7 +3,12 @@ import { Stack } from "@mui/system";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Link from "next/link";
 import MainLayout from "../layout/MainLayout";
-import { infoStyle, sectionStyle, typographyStyle } from "../styles/styles";
+import {
+  ButtonStyle,
+  infoStyle,
+  sectionStyle,
+  typographyStyle,
+} from "../styles/styles";
 
 const NotFoundPage = () => {
   return (
@@ -21,12 +26,7 @@ const NotFoundPage = () => {
             textAlign={"center"}
             bgcolor={"rgba(255,255,255,0.7)"}
             margin={"0 0 80px 0"}
-            sx={{
-              "&:active": {
-                boxShadow: "none !important",
-                transform: "translate(3px)",
-              },
-            }}
+            sx={ButtonStyle}
           >
             <ArrowBackIcon /> Back to home
           </Typography>

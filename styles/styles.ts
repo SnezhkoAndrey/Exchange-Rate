@@ -34,3 +34,29 @@ export const styledError = {
     borderRadius: "0",
   },
 };
+
+export const ButtonStyle = {
+  "&:active": {
+    boxShadow: "none !important",
+    transform: "translate(3px)",
+  },
+};
+
+export const AnimatedTextStyle = {
+  fontFamily: "VT323",
+  fontSize: 20,
+  padding: "5px 10px",
+  border: "4px double",
+  borderColor: "rgba(40,22,17)",
+  color: "rgba(40,22,17)",
+  width: "content",
+  maxWidth: "300px",
+};
+
+export const SelectorStyle = {
+  fontFamily: "VT323",
+  borderRadius: 0,
+  fontSize: 25,
+  background: "rgba(255,255,255,0.8)",
+  color: "rgba(40,22,17)",
+};

@@ -17,3 +17,12 @@ export interface Coursid {
 export interface CourcidResponceType {
   courcid: Coursid[];
 }
+
+export type DataResponseType = {
+  base: string;
+  end_date: string;
+  rates: {};
+  start_date: string;
+  success: boolean;
+  timeseries: boolean;
+};

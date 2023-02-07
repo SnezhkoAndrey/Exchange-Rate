@@ -4,9 +4,13 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 import { CourcidResponceType } from "../types/types";
-import { infoStyle, sectionStyle, typographyStyle } from "../styles/styles";
+import {
+  ButtonStyle,
+  infoStyle,
+  sectionStyle,
+  typographyStyle,
+} from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
 
@@ -31,12 +35,7 @@ const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
               style={typographyStyle}
               textAlign={"center"}
               bgcolor={"rgba(255,255,255,0.7)"}
-              sx={{
-                "&:active": {
-                  boxShadow: "none !important",
-                  transform: "translate(3px)",
-                },
-              }}
+              sx={ButtonStyle}
             >
               <ArrowBackIcon /> Calculations
             </Typography>
@@ -48,12 +47,7 @@ const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
               style={typographyStyle}
               textAlign={"center"}
               bgcolor={"rgba(255,255,255,0.7)"}
-              sx={{
-                "&:active": {
-                  boxShadow: "none !important",
-                  transform: "translate(3px)",
-                },
-              }}
+              sx={ButtonStyle}
             >
               History <ArrowForwardIcon />
             </Typography>

@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 import { Box } from "@mui/system";
 import { SelectChangeEvent } from "@mui/material/Select";
 import SelectorField from "../components/SelectorField";
-import { sectionStyle, typographyStyle } from "../styles/styles";
+import { ButtonStyle, sectionStyle, typographyStyle } from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
 import Loader from "../components/Loader";
@@ -94,12 +94,7 @@ const HistoryPage = observer(() => {
             textAlign={"center"}
             margin={"0 0 20px 0"}
             bgcolor={"rgba(255,255,255,0.7)"}
-            sx={{
-              "&:active": {
-                boxShadow: "none !important",
-                transform: "translate(3px)",
-              },
-            }}
+            sx={ButtonStyle}
           >
             Back
           </Typography>

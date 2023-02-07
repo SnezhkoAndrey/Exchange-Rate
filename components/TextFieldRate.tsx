@@ -15,7 +15,11 @@ const TextFieldRate = ({ label, value, onChange }: PropsType) => {
       onChange={onChange}
       InputLabelProps={{
         shrink: true,
-        sx: { fontFamily: "VT323", fontSize: 25, color: "rgba(40,22,17)" },
+        sx: {
+          fontFamily: "VT323",
+          fontSize: 25,
+          color: "rgba(40,22,17)",
+        },
       }}
       InputProps={{
         sx: {
