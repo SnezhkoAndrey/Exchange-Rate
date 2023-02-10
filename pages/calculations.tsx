@@ -7,10 +7,10 @@ import exchangeRate from "../store/exchangeRate";
 import TextFieldRate from "../components/TextFieldRate";
 import SelectorField from "../components/SelectorField";
 import { SelectChangeEvent } from "@mui/material";
-import { ButtonStyle, sectionStyle, typographyStyle } from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
 import { CourcidResponceType } from "../types/types";
+import BackgroundStack from "../components/BackgroundStack";
 
 const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
   const { currency } = exchangeRate.exchangeRates;
@@ -54,7 +54,7 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
     });
   };
 
-  const onChangeDomesticCurrency = (
+  const onChangeNationalCurrency = (
     event: React.ChangeEvent<{ value: string }>
   ) => {
     setCalcValue({
@@ -66,20 +66,13 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
 
   return (
     <MainLayout title="Calculation Page">
-      <Stack
-        direction={"column"}
-        alignItems={"center"}
-        spacing={12}
-        style={sectionStyle}
-      >
+      <BackgroundStack spacing={{ xs: 12, md: 12, sm: 12 }}>
         <Link href={"/"}>
           <Typography
             variant="h4"
             component="div"
-            style={typographyStyle}
             textAlign={"center"}
             bgcolor={"rgba(255,255,255,0.7)"}
-            sx={ButtonStyle}
           >
             Back
           </Typography>
@@ -101,7 +94,7 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
             <TextFieldRate
               label="UAH"
               value={isUSD ? USD : EUR}
-              onChange={onChangeDomesticCurrency}
+              onChange={onChangeNationalCurrency}
             />
           </Stack>
 
@@ -113,7 +106,7 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
           />
         </Stack>
         <AnimatedText textValue="Calculations are made at the cash rate (sale) of Privat Bank (in branches). Last update: today. Thank you for using the application!" />
-      </Stack>
+      </BackgroundStack>
     </MainLayout>
   );
 });

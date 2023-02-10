@@ -5,23 +5,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
 import { CourcidResponceType } from "../types/types";
-import {
-  ButtonStyle,
-  infoStyle,
-  sectionStyle,
-  typographyStyle,
-} from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
+import BackgroundStack from "../components/BackgroundStack";
 
 const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
   return (
     <MainLayout title="Hello, my friend!">
-      <Stack
-        style={sectionStyle}
-        spacing={{ xs: 6, sm: 10, md: 10 }}
-        alignItems={"center"}
-      >
+      <BackgroundStack spacing={{ xs: 6, sm: 10, md: 10 }}>
         <Stack
           direction={{ xs: "column", sm: "row", md: "row" }}
           justifyContent={"space-evenly"}
@@ -32,10 +23,8 @@ const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
             <Typography
               variant="h4"
               component="div"
-              style={typographyStyle}
               textAlign={"center"}
               bgcolor={"rgba(255,255,255,0.7)"}
-              sx={ButtonStyle}
             >
               <ArrowBackIcon /> Calculations
             </Typography>
@@ -44,10 +33,8 @@ const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
             <Typography
               variant="h4"
               component="div"
-              style={typographyStyle}
               textAlign={"center"}
               bgcolor={"rgba(255,255,255,0.7)"}
-              sx={ButtonStyle}
             >
               History <ArrowForwardIcon />
             </Typography>
@@ -65,24 +52,21 @@ const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
               <Typography
                 variant="h3"
                 component="div"
-                style={infoStyle}
                 bgcolor={"rgba(255,255,255,0.7)"}
               >
                 {c.ccy}
               </Typography>
               <Typography
-                variant="h4"
+                variant="h5"
                 component="div"
-                style={infoStyle}
                 bgcolor={"rgba(255,255,255,0.7)"}
                 color={"rgba(38,38,38,1)"}
               >
                 BUY: {Number(c.buy).toFixed(3)}
               </Typography>
               <Typography
-                variant="h4"
+                variant="h5"
                 component="div"
-                style={infoStyle}
                 bgcolor={"rgba(255,255,255,0.7)"}
               >
                 SALE: {Number(c.sale).toFixed(3)}
@@ -91,7 +75,7 @@ const ExchangeRateHomePage = observer(({ courcid }: CourcidResponceType) => {
           ))}
         </Stack>
         <AnimatedText textValue="Privat Bank cash exchange rate (in branches). Last update: today. Have a nice day!" />
-      </Stack>
+      </BackgroundStack>
     </MainLayout>
   );
 });

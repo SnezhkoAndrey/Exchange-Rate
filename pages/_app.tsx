@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import Router from "next/router";
 import ErrorLayout from "../layout/ErrorLayout";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "../styles/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [Router.events]);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       {loading ? (
         <Loader size={150} height={"100vh"} />
       ) : (
@@ -28,6 +30,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </ErrorLayout>
       )}
-    </>
+    </ThemeProvider>
   );
 }

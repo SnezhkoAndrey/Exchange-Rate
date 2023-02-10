@@ -3,18 +3,19 @@ import { Stack } from "@mui/system";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Link from "next/link";
 import MainLayout from "../layout/MainLayout";
-import {
-  ButtonStyle,
-  infoStyle,
-  sectionStyle,
-  typographyStyle,
-} from "../styles/styles";
 
 const NotFoundPage = () => {
   return (
     <MainLayout title="Sorry :(">
       <Stack
-        style={sectionStyle}
+        sx={{
+          padding: "20px 0 0 0",
+          height: "100vh",
+          backgroundImage:
+            "url('https://thumbs.gfycat.com/GrimDescriptiveChihuahua-max-1mb.gif')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
         alignItems={"center"}
         justifyContent={"start"}
       >
@@ -22,19 +23,16 @@ const NotFoundPage = () => {
           <Typography
             variant="h4"
             component="div"
-            style={typographyStyle}
             textAlign={"center"}
             bgcolor={"rgba(255,255,255,0.7)"}
             margin={"0 0 80px 0"}
-            sx={ButtonStyle}
           >
             <ArrowBackIcon /> Back to home
           </Typography>
         </Link>
         <Typography
-          variant="h4"
+          variant="h5"
           component="div"
-          style={infoStyle}
           bgcolor={"rgba(255,255,255,0.7)"}
           fontSize={{ xs: 35, sm: 45, md: 50 }}
         >

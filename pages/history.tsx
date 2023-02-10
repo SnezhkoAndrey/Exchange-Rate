@@ -9,10 +9,10 @@ import dynamic from "next/dynamic";
 import { Box } from "@mui/system";
 import { SelectChangeEvent } from "@mui/material/Select";
 import SelectorField from "../components/SelectorField";
-import { ButtonStyle, sectionStyle, typographyStyle } from "../styles/styles";
 import MainLayout from "../layout/MainLayout";
 import AnimatedText from "../components/AnimatedText";
 import Loader from "../components/Loader";
+import BackgroundStack from "../components/BackgroundStack";
 
 const Line = dynamic(() => import("@ant-design/charts").then((m) => m.Line), {
   ssr: false,
@@ -80,21 +80,14 @@ const HistoryPage = observer(() => {
 
   return (
     <MainLayout title="History Page">
-      <Stack
-        style={sectionStyle}
-        direction={"column"}
-        alignItems={"center"}
-        spacing={2}
-      >
+      <BackgroundStack spacing={{ xs: 2, md: 2, sm: 2 }}>
         <Link href={"/"}>
           <Typography
             variant="h4"
             component="div"
-            style={typographyStyle}
             textAlign={"center"}
             margin={"0 0 20px 0"}
             bgcolor={"rgba(255,255,255,0.7)"}
-            sx={ButtonStyle}
           >
             Back
           </Typography>
@@ -123,7 +116,7 @@ const HistoryPage = observer(() => {
           <Line {...config} />
         </Box>
         <AnimatedText textValue="The chart uses NBU cash exchange rate data for the selected year. Last update: today. You are incredible!" />
-      </Stack>
+      </BackgroundStack>
     </MainLayout>
   );
 });
