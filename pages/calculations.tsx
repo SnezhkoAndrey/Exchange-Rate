@@ -86,7 +86,7 @@ const CalculationsPage = observer(({ courcid }: CourcidResponceType) => {
         >
           <Stack direction={{ xs: "column", sm: "row", md: "row" }} spacing={4}>
             <TextFieldRate
-              label={currency === "USD" ? "USD" : "EUR"}
+              label={isUSD ? "USD" : "EUR"}
               value={UAH}
               onChange={onChangeForeignCurrency}
             />
