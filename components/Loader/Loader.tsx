@@ -14,7 +14,7 @@ const Loader = ({ size, height }: PropsType) => {
       padding={5}
       sx={{
         backgroundImage:
-          "url('https://thumbs.gfycat.com/GrimDescriptiveChihuahua-max-1mb.gif')",
+          "url('https://i.pinimg.com/originals/54/f8/13/54f81331a9da88c623b96363fb0a4da1.gif')",
         height: { height },
       }}
     >
